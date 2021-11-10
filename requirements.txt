@@ -1,0 +1,4 @@
+solana
+flask 
+python-dotenv
+flask_sqlalchemy

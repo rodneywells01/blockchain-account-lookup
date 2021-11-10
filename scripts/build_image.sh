@@ -1,0 +1,1 @@
+docker build -t crypto_nw_tracker:latest . 
