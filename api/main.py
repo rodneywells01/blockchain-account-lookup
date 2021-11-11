@@ -15,7 +15,7 @@ def hello_world():
 @app.route("/hello")
 def hello():
     logging.info("Hello, world!1")
-    return {"message": "hello, world!1"}
+    return {"message": "hello, world! blockchain"}
 
 
 @app.route("/sol/<account>")

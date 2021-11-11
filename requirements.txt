@@ -2,3 +2,12 @@ solana
 flask 
 python-dotenv
 flask_sqlalchemy
+
+
+asyncio
+websockets
+
+
+flask-socketio
+
+
