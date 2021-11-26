@@ -13,13 +13,14 @@ import requests
 
 from extensions import db 
 
+print("Hello")
 
 # Initial Flask configuration. 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:postgres@postgres:5432/pantry"  # TODO - do not store here
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-db.init_app(app)
+# db.init_app(app)
 
 # migrate = Migrate(app, db)
 auth = HTTPBasicAuth()
@@ -98,7 +99,6 @@ def verify_password(username, password):
     return True
 
 
-
 def get_current_asset_info(coin_id):
     """
     Get the current price in USD for a given coin id. 
@@ -107,4 +107,6 @@ def get_current_asset_info(coin_id):
     response = requests.request("GET", url)
     return response.json()["market_data"]["current_price"]["usd"]
 
-    
+if __name__ == "__main__":
+    print("In main!")
+    app.run(host='0.0.0.0', port=os.getenv('PORT', 5001))

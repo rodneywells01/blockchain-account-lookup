@@ -1,2 +1,3 @@
 docker compose build api
-docker run -it --entrypoint=bash crypto_nw_tracker:latest -c 'python api/main.py'
+docker run -it --entrypoint=bash crypto_nw_tracker:latest -c 'flask run'
+# docker run -it --entrypoint=bash crypto_nw_tracker:latest -c 'python api/main.py'
