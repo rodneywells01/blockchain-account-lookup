@@ -32,6 +32,7 @@ class AccountInput extends React.Component {
     this.state = {
       account_id: '',
       value: 0,
+      current_coin_price: 0
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -51,6 +52,7 @@ class AccountInput extends React.Component {
       console.log("Got it!")
       console.log(data);
       this.setState({value: data.sol_balance});
+      this.setState({current_coin_price: data.current_coin_price})
     });
   }
 
@@ -70,6 +72,14 @@ class AccountInput extends React.Component {
           <div id="value_display">
             You own: {this.state.value} SOL
           </div>
+          <div id="value_display">
+            The current price of SOL is {this.state.current_coin_price}
+          </div>
+          <div id="value_display">
+            {/*The networth of your position is: ${(parseFloat(this.state.current_coin_price * this.state.value).toFixed(2)).toLocaleString()}*/}
+            The networth of your position is: ${(this.state.current_coin_price * this.state.value).toLocaleString()}
+          </div>
+
         </div>
       )
     } else {
@@ -102,7 +112,7 @@ class MyApp extends React.Component {
       <div id="background">
         <div id="greeting-card">
           <div id="pantry-text">
-            <h1>Crypto Net Worth Tracker</h1>
+            <h1>Crypto Net Worth Tracker.</h1>
           </div>
           <div id="greeting">
             <h3>Time to track your net worth.</h3>
@@ -110,6 +120,7 @@ class MyApp extends React.Component {
         </div>
       
         <AccountInput/>
+         
       </div>
     );
 
