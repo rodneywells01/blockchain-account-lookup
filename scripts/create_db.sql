@@ -1,59 +1,26 @@
--- CREATE DATABASE pantry;
--- \c pantry;
+CREATE DATABASE blockchain_account_lookup;
+\c blockchain_account_lookup;
 
 
--- DROP TABLE inventory;
--- CREATE TABLE inventory(
--- 	ID SERIAL PRIMARY KEY     NOT NULL,
--- 	USER_ID VARCHAR(50) NOT NULL, 
--- 	UPC VARCHAR(13) NOT NULL, 
--- 	QTY_PERCENTAGE_REMAINING NUMERIC NOT NULL
--- );
+-- Create extension for UUID Generation. Postgres does not support 
+-- this by default. 
+CREATE EXTENSION IF NOT EXISTS 'uuid-ossp';
 
+DROP TABLE users;
+CREATE TABLE users(
+	ID SERIAL PRIMARY KEY     NOT NULL,
+	USER_ID uuid DEFAULT uuid_generate_v4(), 
+	EMAIL VARCHAR(50) UNIQUE, 
+	PASSWORD_HASH VARCHAR(128) NOT NULL
+);
 
-
--- DROP TABLE product_info;
--- CREATE TABLE product_info(
--- 	ID SERIAL PRIMARY KEY     NOT NULL,
--- 	TITLE TEXT NOT NULL, 
--- 	DESCRIPTION TEXT, 
--- 	EAN VARCHAR(13) NOT NULL,
--- 	UPC VARCHAR(13) NOT NULL,
--- 	BRAND TEXT NOT NULL,
--- 	MODEL TEXT,
--- 	CATEGORY TEXT NOT NULL,
--- 	IMAGE_URL TEXT
--- );
-
-
-
--- DROP TABLE product_info;
--- CREATE TABLE product_info(
--- 	ID SERIAL PRIMARY KEY     NOT NULL,
--- 	TITLE TEXT NOT NULL, 
--- 	DESCRIPTION TEXT, 
--- 	EAN VARCHAR(13) NOT NULL,
--- 	UPC VARCHAR(13) NOT NULL,
--- 	BRAND TEXT NOT NULL,
--- 	MODEL TEXT,
--- 	CATEGORY TEXT NOT NULL,
--- 	IMAGE_URL TEXT
--- );
-
-
-
-
--- -- Create extension for UUID Generation. Postgres does not support 
--- -- this by default. 
--- CREATE EXTENSION IF NOT EXISTS 'uuid-ossp';
-
--- CREATE TABLE users(
--- 	ID SERIAL PRIMARY KEY     NOT NULL,
--- 	USER_ID uuid DEFAULT uuid_generate_v4(), 
--- 	EMAIL VARCHAR(50) UNIQUE, 
--- 	FIRST_NAME VARCHAR(50) NOT NULL, 
--- 	LAST_NAME VARCHAR(50) NOT NULL
--- );
+DROP TABLE user_accounts;
+CREATE TABLE user_accounts(
+	ID SERIAL PRIMARY KEY     NOT NULL,
+	USER_ID INTEGER NOT NULL, 
+	ACCOUNT_ID VARCHAR(64), 
+	ASSET_TYPE VARCHAR(5)
+);
 
 -- -- Sample User 
 -- INSERT INTO users(email, first_name, last_name) VALUES (

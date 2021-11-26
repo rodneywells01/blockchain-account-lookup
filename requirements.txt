@@ -2,12 +2,12 @@ solana
 flask 
 python-dotenv
 flask_sqlalchemy
-
+flask_migrate
+psycopg2
+flask_httpauth
+passlib[bcrypt]
 
 asyncio
 websockets
 
-
 flask-socketio
-
-

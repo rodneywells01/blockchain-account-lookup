@@ -3,8 +3,6 @@ from solana.rpc.api import Client
 
 http_client = Client("https://api.mainnet-beta.solana.com")
 
-
-
 sol_per_lamport = 0.000000001
 
 
@@ -35,6 +33,8 @@ res = http_client.get_account_info(
 	PublicKey("6sFdGABSP5FA3Lx8i473zBeEGn5uAS7h7wprwj9nWVaz"),
     encoding = "jsonParsed",
 )
+
+print(res)
 
 sol_balance = res["result"]["value"]["lamports"] * sol_per_lamport
 print(sol_balance)
