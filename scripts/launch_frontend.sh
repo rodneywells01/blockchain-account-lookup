@@ -1,1 +1,1 @@
-yarn start
+yarn --cwd ./app start
